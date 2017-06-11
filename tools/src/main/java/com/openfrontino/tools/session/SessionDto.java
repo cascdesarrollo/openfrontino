@@ -20,7 +20,7 @@ public class SessionDto implements Serializable {
     private String dbuser;
     private String dbpassword;
     //Cajaa
-    private String nrocaja;
+    private int nrocaja;
     //USuario
     private UsuarioDto dtoUsu;
     //Empresa
@@ -31,7 +31,11 @@ public class SessionDto implements Serializable {
     private String cajUsr;
     private String cajPas;
     private String cajPas2;
-    //Caja
+    //Generales
+    private double impExe;
+    private double impGen;
+    private double impRed;
+    private double impAdi;
 
     public String getDbhost() {
         return dbhost;
@@ -113,11 +117,11 @@ public class SessionDto implements Serializable {
         this.cajPas2 = cajPas2;
     }
 
-    public String getNrocaja() {
+    public int getNrocaja() {
         return nrocaja;
     }
 
-    public void setNrocaja(String nrocaja) {
+    public void setNrocaja(int nrocaja) {
         this.nrocaja = nrocaja;
     }
 
@@ -137,4 +141,37 @@ public class SessionDto implements Serializable {
         this.dtoUsu = dtoUsu;
     }
 
+    public double getImpExe() {
+        return impExe;
+    }
+
+    public void setImpExe(double impExe) {
+        this.impExe = impExe;
+    }
+
+    public double getImpGen() {
+        return impGen;
+    }
+
+    public void setImpGen(double impGen) {
+        this.impGen = impGen;
+    }
+
+    public double getImpRed() {
+        return impRed;
+    }
+
+    public void setImpRed(double impRed) {
+        this.impRed = impRed;
+    }
+
+    public double getImpAdi() {
+        return impAdi;
+    }
+
+    public void setImpAdi(double impAdi) {
+        this.impAdi = impAdi;
+    }
+
+    
 }

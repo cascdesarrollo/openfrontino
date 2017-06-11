@@ -16,6 +16,8 @@ import java.sql.Connection;
 import java.util.Arrays;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -31,6 +33,10 @@ public class VenSetup extends javax.swing.JDialog {
     public VenSetup(java.awt.Frame parent, boolean modal, SessionDto _ses) {
         super(parent, modal);
         initComponents();
+        //Para default
+        JRootPane rootPanel = SwingUtilities.getRootPane(btnGenerar);
+        rootPanel.setDefaultButton(btnGenerar);
+
         dtoSes = _ses;
     }
 
@@ -513,18 +519,22 @@ public class VenSetup extends javax.swing.JDialog {
                 commit = ses.agregarCajero(txtCajUsr.getText(), pasCaj.toString(), txtCajUsr.getText());
             }
             Properties prop = ses.getProperties();
-            String nrocaja = prop.getProperty("nrocaja");
-            prop.setProperty("nrocaja",
-                    String.valueOf(ses.agregarCaja(
-                            (nrocaja != null && !nrocaja.trim().equals(""))
-                            ? Integer.parseInt(nrocaja) : 0)));
+            int nrocaja;
+            try {
+                nrocaja = Integer.parseInt(prop.getProperty("nrocaja"));
+            } catch (NumberFormatException ex) {
+                nrocaja = 0;
+            }
+            dtoSes.setNrocaja(nrocaja);
+            prop.setProperty("nrocaja", String.valueOf(nrocaja));
             prop.setProperty("dbhost", txtHost.getText());
             prop.setProperty("dbport", txtPort.getText());
             prop.setProperty("dbname", txtDataBaseName.getText());
             prop.setProperty("dbuser", txtDataBaseUser.getText());
             prop.setProperty("dbpassword", Encrypting.crypt(passwordDb.toString()));
-            prop.store(new FileWriter("./openfrontino.properties"),"Bienvenida");
+            prop.store(new FileWriter("./openfrontino.properties"), "Bienvenida");
             con.commit();
+            ses.obtenerParametrosGenerales(prop, dtoSes);
             this.dispose();
         } catch (Exception ex) {
             ConnectionTool.rollBackTrans(con);
@@ -532,7 +542,7 @@ public class VenSetup extends javax.swing.JDialog {
         } finally {
             ConnectionTool.killConnection(con);
         }
-        
+
 
     }//GEN-LAST:event_btnGenerarActionPerformed
 

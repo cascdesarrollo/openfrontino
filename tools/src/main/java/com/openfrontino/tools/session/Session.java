@@ -16,8 +16,6 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -61,18 +59,20 @@ public class Session {
             }
             this.setCon(conex.getConexion());
             dto.setDtoEmp(this.consultarEmpresa());
-            if(dto.getDtoEmp()==null){
+            if (dto.getDtoEmp() == null) {
                 return null;
             }
-            dto.setNrocaja(prop.getProperty("nrocaja"));
-            if(dto.getNrocaja()==null || dto.getNrocaja().trim().equals("") ||
-                    dto.getNrocaja().trim().equals("0")
-                    ){
+            int nroCaj;
+            try {
+                nroCaj = Integer.parseInt(prop.getProperty("nrocaja"));
+            } catch (NumberFormatException ex) {
+                nroCaj = 0;
+            }
+            if (nroCaj == 0) {
                 return null;
             }
-                    
-            System.out.println("No se sabe");
-
+            dto.setNrocaja(nroCaj);
+            obtenerParametrosGenerales(prop, dto);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -231,5 +231,28 @@ public class Session {
             throw new Exception(ex.getMessage());
         }
         return result;
+    }
+
+    public void obtenerParametrosGenerales(Properties _prop, SessionDto _dtoSes) {
+        try {
+            _dtoSes.setImpExe(Double.valueOf(_prop.getProperty("impexe")));
+        } catch (NumberFormatException e) {
+            _dtoSes.setImpExe(0);
+        }
+        try {
+            _dtoSes.setImpGen(Double.valueOf(_prop.getProperty("impgen")));
+        } catch (NumberFormatException e) {
+            _dtoSes.setImpExe(12);
+        }
+        try {
+            _dtoSes.setImpRed(Double.valueOf(_prop.getProperty("impred")));
+        } catch (NumberFormatException e) {
+            _dtoSes.setImpExe(8);
+        }
+        try {
+            _dtoSes.setImpAdi(Double.valueOf(_prop.getProperty("impadi")));
+        } catch (NumberFormatException e) {
+            _dtoSes.setImpExe(27);
+        }
     }
 }
