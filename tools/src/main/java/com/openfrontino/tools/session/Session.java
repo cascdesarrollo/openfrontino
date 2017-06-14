@@ -254,5 +254,14 @@ public class Session {
         } catch (NumberFormatException e) {
             _dtoSes.setImpExe(27);
         }
+        _dtoSes.setSeparadordecimal(
+                _prop.getProperty("separadordecimal") != null
+                ? _prop.getProperty("separadordecimal") : ","
+        );
+        _dtoSes.setSeparadormiles(
+                _prop.getProperty("separadormiles") != null
+                ? _prop.getProperty("separadormiles") : "."
+        );
+
     }
 }

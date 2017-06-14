@@ -6,7 +6,7 @@
 package com.openfrontino.adm.views;
 
 import com.openfrontino.adm.views.conf.VenSetup;
-import com.openfrontino.adm.views.conf.general.products.VenProducts;
+import com.openfrontino.adm.views.conf.general.products.VenProductos;
 import com.openfrontino.adm.views.security.VenLogin;
 import com.openfrontino.tools.session.SessionDto;
 import javax.swing.JOptionPane;
@@ -127,7 +127,7 @@ public class VenFrontinoAdm extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        VenProducts venprod = new VenProducts(dtoSes);
+        VenProductos venprod = new VenProductos(dtoSes);
 
         venprod.setVisible(true);
         desktop.add(venprod);

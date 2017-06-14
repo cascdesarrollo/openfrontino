@@ -14,22 +14,27 @@ public class ProductoDto {
     private int idePro;
     private String codPro;
     private String nomPro;
-    private String cmrPro;
+    private String cbrPro;
     private boolean movPro;
     private UnidadDto undCom;
     private UnidadDto undVen;
-    private float facPro;
-    private float disVen;
-    private float disCom;
-    private float pr1Pro;
-    private float pr2Pro;
-    private float pr3Pro;
-    private float pimPro;
-    private float cosPro;
+    private double facPro;
+    private double disVen;
+    private double disCom;
+    private double pr1Pro;
+    private double pr2Pro;
+    private double pr3Pro;
+    private double ut1Pro;
+    private double ut2Pro;
+    private double ut3Pro;
+    private double pimPro;
+    private double cosPro;
+    private double pesPro;
     private boolean creNod;
     private boolean obsPro;
     private boolean cmbPro;
     private boolean selPro;
+    private boolean actPre;
     private int ordPro;
     private char staPro;
 
@@ -57,13 +62,15 @@ public class ProductoDto {
         this.nomPro = nomPro;
     }
 
-    public String getCmrPro() {
-        return cmrPro;
+    public String getCbrPro() {
+        return cbrPro;
     }
 
-    public void setCmrPro(String cmrPro) {
-        this.cmrPro = cmrPro;
+    public void setCbrPro(String cbrPro) {
+        this.cbrPro = cbrPro;
     }
+
+  
 
     public boolean isMovPro() {
         return movPro;
@@ -89,67 +96,67 @@ public class ProductoDto {
         this.undVen = undVen;
     }
 
-    public float getFacPro() {
+    public double getFacPro() {
         return facPro;
     }
 
-    public void setFacPro(float facPro) {
+    public void setFacPro(double facPro) {
         this.facPro = facPro;
     }
 
-    public float getDisVen() {
+    public double getDisVen() {
         return disVen;
     }
 
-    public void setDisVen(float disVen) {
+    public void setDisVen(double disVen) {
         this.disVen = disVen;
     }
 
-    public float getDisCom() {
+    public double getDisCom() {
         return disCom;
     }
 
-    public void setDisCom(float disCom) {
+    public void setDisCom(double disCom) {
         this.disCom = disCom;
     }
 
-    public float getPr1Pro() {
+    public double getPr1Pro() {
         return pr1Pro;
     }
 
-    public void setPr1Pro(float pr1Pro) {
+    public void setPr1Pro(double pr1Pro) {
         this.pr1Pro = pr1Pro;
     }
 
-    public float getPr2Pro() {
+    public double getPr2Pro() {
         return pr2Pro;
     }
 
-    public void setPr2Pro(float pr2Pro) {
+    public void setPr2Pro(double pr2Pro) {
         this.pr2Pro = pr2Pro;
     }
 
-    public float getPr3Pro() {
+    public double getPr3Pro() {
         return pr3Pro;
     }
 
-    public void setPr3Pro(float pr3Pro) {
+    public void setPr3Pro(double pr3Pro) {
         this.pr3Pro = pr3Pro;
     }
 
-    public float getPimPro() {
+    public double getPimPro() {
         return pimPro;
     }
 
-    public void setPimPro(float pimPro) {
+    public void setPimPro(double pimPro) {
         this.pimPro = pimPro;
     }
 
-    public float getCosPro() {
+    public double getCosPro() {
         return cosPro;
     }
 
-    public void setCosPro(float cosPro) {
+    public void setCosPro(double cosPro) {
         this.cosPro = cosPro;
     }
 
@@ -199,6 +206,46 @@ public class ProductoDto {
 
     public void setStaPro(char staPro) {
         this.staPro = staPro;
+    }
+
+    public boolean isActPre() {
+        return actPre;
+    }
+
+    public void setActPre(boolean actPre) {
+        this.actPre = actPre;
+    }
+
+    public double getUt1Pro() {
+        return ut1Pro;
+    }
+
+    public void setUt1Pro(double ut1Pro) {
+        this.ut1Pro = ut1Pro;
+    }
+
+    public double getUt2Pro() {
+        return ut2Pro;
+    }
+
+    public void setUt2Pro(double ut2Pro) {
+        this.ut2Pro = ut2Pro;
+    }
+
+    public double getUt3Pro() {
+        return ut3Pro;
+    }
+
+    public void setUt3Pro(double ut3Pro) {
+        this.ut3Pro = ut3Pro;
+    }
+
+    public double getPesPro() {
+        return pesPro;
+    }
+
+    public void setPesPro(double pesPro) {
+        this.pesPro = pesPro;
     }
 
 }

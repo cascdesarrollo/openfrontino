@@ -5,7 +5,10 @@
  */
 package com.openfrontino.tools.session;
 
+import com.openfrontino.tools.format.Formateo;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,7 +39,43 @@ public class SessionDto implements Serializable {
     private double impGen;
     private double impRed;
     private double impAdi;
+    private String separadordecimal;
+    private String separadormiles;
+    
+    public double valorDoubleFomateado(String _valor) {
+        return Formateo.valor(getSeparadormiles(), getSeparadordecimal(), _valor, true);
+    }
+    
+    public double valorDouble(String _valor) {
+        return Formateo.valor(getSeparadormiles(), getSeparadordecimal(), _valor, false);
+    }
 
+    public String formatearString(String _valor) {
+        try {
+            return Formateo.numeroFormateadoStr(getSeparadordecimal(), Formateo.valor(getSeparadormiles(), getSeparadordecimal(), _valor, false), 2);
+        } catch (Exception ex) {
+            return "0";
+        }
+    }
+    
+    public String quitarFormatoString(String _valor){
+        try {
+            return Formateo.quitarFormatoString(getSeparadormiles(),getSeparadordecimal(),_valor);
+        } catch (Exception ex) {
+            return "0";
+        }
+    }
+    
+    public String numeroFormateadoStr(double _valor){
+        try {
+            return Formateo.numeroFormateadoStr(getSeparadordecimal(), _valor, 2);
+        } catch (Exception ex) {
+            return "0";
+        }
+    }
+
+    //-- GETTERRS Y SETTERS -- /
+    
     public String getDbhost() {
         return dbhost;
     }
@@ -173,5 +212,22 @@ public class SessionDto implements Serializable {
         this.impAdi = impAdi;
     }
 
+    public String getSeparadordecimal() {
+        return separadordecimal;
+    }
+
+    public void setSeparadordecimal(String separadordecimal) {
+        this.separadordecimal = separadordecimal;
+    }
+
+    public String getSeparadormiles() {
+        return separadormiles;
+    }
+
+    public void setSeparadormiles(String separadormiles) {
+        this.separadormiles = separadormiles;
+    }
+
+    
     
 }
